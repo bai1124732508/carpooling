@@ -88,10 +88,10 @@ $(function (){
 				layer.close(loading);
 				if(data.code == 1){
 					if (data.url != '' && data.url !=null ) {
-						alert(data.url);
+						location.href = data.url;
 						setTimeout(function(){
-							location.href = data.url;
-						},data.wait*1000);
+							
+						},1000);
 					}else{
 						ErroAlert(data.msg + ',3秒后页面将是刷新页面~',data.wait,'error');
 						$('.gzhuce').removeClass('disabled').prop('disabled',false);
