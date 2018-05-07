@@ -1,0 +1,22 @@
+	<!DOCTYPE html>
+	<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<body>
+	<div id="page_Div" class="page_Div" style="text-align: center;">
+	</div>
+	
+	 <!-- 当前页数 -->
+	 <input id="pageinfo_pageNum" type="hidden" name="pageNum" th:value="${page.pageNum }"/>
+	 <!-- 每页大小 -->
+	 <input id="pageinfo_pageSize" type="hidden" name="pageSize"  th:value="${page.pageSize}"/>
+	 <!-- 总数量 -->
+	 <input id="pageinfo_total" type="hidden"  th:value="${page.total }"/>
+	 <!-- 总页数 -->
+	 <input id="pageinfo_pages" type="hidden" name="pages"  th:value="${page.pages }"/>
+	 
+	 <span th:if="${page.total} &gt; 1 " style="display:none;" id="totalcount"> 
+	 <label style="text-align:center;height:26px;line-height:26px;">
+		总共:<i  th:text="${page.total}" ></i>条
+	</label>
+	 </span> 
+   </body>
+    </html>

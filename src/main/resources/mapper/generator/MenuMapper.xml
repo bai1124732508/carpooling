@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.carpooling.dao.generator.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.carpooling.po.Menu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="CHAR" />
+    <result column="hide" property="hide" jdbcType="BIT" />
+    <result column="tip" property="tip" jdbcType="VARCHAR" />
+    <result column="group" property="group" jdbcType="VARCHAR" />
+    <result column="is_dev" property="isDev" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="BIT" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="utime" property="utime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, pid, sort, url, hide, tip, group, is_dev, status, icon, level, ctime, 
+    utime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.carpooling.po.Menu" >
+    insert into menu (id, title, pid, 
+      sort, url, hide, tip, 
+      group, is_dev, status, icon, 
+      level, ctime, utime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{url,jdbcType=CHAR}, #{hide,jdbcType=BIT}, #{tip,jdbcType=VARCHAR}, 
+      #{group,jdbcType=VARCHAR}, #{isDev,jdbcType=BIT}, #{status,jdbcType=BIT}, #{icon,jdbcType=VARCHAR}, 
+      #{level,jdbcType=BIT}, #{ctime,jdbcType=TIMESTAMP}, #{utime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.carpooling.po.Menu" >
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="hide != null" >
+        hide,
+      </if>
+      <if test="tip != null" >
+        tip,
+      </if>
+      <if test="group != null" >
+        group,
+      </if>
+      <if test="isDev != null" >
+        is_dev,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="utime != null" >
+        utime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=CHAR},
+      </if>
+      <if test="hide != null" >
+        #{hide,jdbcType=BIT},
+      </if>
+      <if test="tip != null" >
+        #{tip,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="isDev != null" >
+        #{isDev,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=BIT},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="utime != null" >
+        #{utime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.carpooling.po.Menu" >
+    update menu
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=CHAR},
+      </if>
+      <if test="hide != null" >
+        hide = #{hide,jdbcType=BIT},
+      </if>
+      <if test="tip != null" >
+        tip = #{tip,jdbcType=VARCHAR},
+      </if>
+      <if test="group != null" >
+        group = #{group,jdbcType=VARCHAR},
+      </if>
+      <if test="isDev != null" >
+        is_dev = #{isDev,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=BIT},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="utime != null" >
+        utime = #{utime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.carpooling.po.Menu" >
+    update menu
+    set title = #{title,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      url = #{url,jdbcType=CHAR},
+      hide = #{hide,jdbcType=BIT},
+      tip = #{tip,jdbcType=VARCHAR},
+      group = #{group,jdbcType=VARCHAR},
+      is_dev = #{isDev,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      icon = #{icon,jdbcType=VARCHAR},
+      level = #{level,jdbcType=BIT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      utime = #{utime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

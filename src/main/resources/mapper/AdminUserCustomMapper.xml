@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.carpooling.dao.AdminUserCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.carpooling.po.AdminUser" >
+    <id column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="is_remove" property="isRemove" jdbcType="TINYINT" />
+    <result column="login_count" property="loginCount" jdbcType="SMALLINT" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="utime" property="utime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uid, username, nickname, password, phone, email, status, is_remove, login_count, 
+    last_login_time, last_login_ip, ctime, utime
+  </sql>
+  <select id="getAdminUserList" resultMap="BaseResultMap" parameterType="com.carpooling.common.BaseQueryVo">
+  	SELECT 
+  		<include refid="Base_Column_List"></include>
+  	FROM 
+  		carpooling.admin_user users
+  	<where>
+  		 <if test="search !=null">
+	  		<if test="search.is_remove!=null and search.is_remove !=''">
+	  			and users.is_remove=#{search.is_remove}
+	  		</if>
+	  	</if>
+  	</where>
+  	ORDER  BY users.uid ASC,users.ctime DESC
+  </select>
+  
+   <select id="checkAdminUserByMember" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from carpooling.admin_user users
+   	<where>
+   	    	is_remove=0
+    		and 
+    		username=#{member.username}
+    		and 
+    		password=#{member.password}
+    	
+   	</where>
+  </select>
+  <select id="getCkAuthMemberCustomByUserName" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from chuangke.ck_auth_member
+   	<where>
+   	    	is_remove=0
+    		and 
+    		username=#{username}
+   	</where>
+  </select>
+  
+  </mapper>

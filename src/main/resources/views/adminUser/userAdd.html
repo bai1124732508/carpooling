@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<div th:include="base/header::head"></div>	
+<body class="childrenBody">
+<form style="width:80%;" id="layerform"  th:action="@{/admin/user/userAdd}"  >
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">账号</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input"  name="username" datatype="s5-16" nullmsg="请输入账号" errormsg="昵称至少5个字符,最多16个字符！" placeholder="请输入账号">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">密码</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input" name="password" datatype="s5-16" nullmsg="请输入密码" errormsg="密码至少5个字符,最多16个字符！" placeholder="请输入密码">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">姓名</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input" name="nickname" datatype="s1-10" nullmsg="请输入姓名" errormsg="密码至少1个字符,最多10个字符！" placeholder="请输入姓名">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">手机号</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input" name="phone" datatype="m" nullmsg="请输入手机号" errormsg="手机号格式错误！" placeholder="请输入手机号">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">邮箱</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input" name="email" datatype="e" nullmsg="请输入邮箱" errormsg="邮箱格式错误！"` placeholder="请输入邮箱">
+		</div>
+	</div>
+	
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<div class="layui-input-block">
+			<button class="layui-btn layui-btn-sm btn-primary" >立即添加</button>
+			<button type="reset" class="layui-btn layui-btn-sm layui-btn-primary layui-btn-close">取消</button>
+		</div>
+	</div>
+</form>
+<div th:include="base/header::footer"></div>
+</html>
