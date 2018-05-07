@@ -89,7 +89,6 @@ $(function (){
 				if(data.code == 1){
 					if (data.url != '' && data.url !=null ) {
 						alert(data.url);
-					//	ErroAlert(data.msg);
 						setTimeout(function(){
 							location.href = data.url;
 						},data.wait*1000);
